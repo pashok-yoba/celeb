@@ -1,0 +1,103 @@
+.wrapper {
+    min-width: 940px;
+}
+.header-image {
+    height: 528px;
+    background-image: url(../images/cabinet.jpg);
+    background-position: right center;
+    background-repeat: no-repeat;
+    text-align: center;
+    min-width: 940px;
+}
+.header-name {
+    font-family: Oranienbaum;
+    font-size: 72px;
+    text-transform: uppercase;
+    padding-top: 224px;
+    display: inline-block;
+    color: #ffffff;
+}
+.wrapper {
+    width: 1001px;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 54px;
+    box-sizing: border-box;
+    padding-left: 55px;
+}
+.item-name {
+    font-size: 10px;
+    text-transform: uppercase;
+    padding-bottom: 23px;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+.item-value {
+    padding-bottom: 53px;
+    font-style: italic;
+    font-size: 11px;
+    color: #858585;
+    letter-spacing: 1px;
+}
+.mobile-number {
+    font-family: Oranienbaum;
+    font-size: 18px;
+    font-style: normal;
+}
+.information {
+    width: 940px;
+    margin: 0 auto;
+}
+.column {
+    width: 49%;
+    vertical-align: top;
+}
+.agree {
+    display: inline-block;
+}
+.agree:after {
+    content: ' ';
+    width: 0;
+    height: 100%;
+    display: inline-block;
+}
+.gal {
+    display: inline-block;
+    margin-right: 25px;
+    width: 18px;
+    height: 16px;
+    background-image: url(../images/galochka-1.jpg);
+    vertical-align: middle;
+}
+.gal-text {
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 1px;
+    vertical-align: middle;
+}
+.line-all {
+    height: 1px;
+    width: 100%;
+    background-image: url('../images/pixel-dotted.jpg');
+    background-repeat: repeat-x;
+    padding-bottom: 55px;
+}
+.redact-button {
+    width: 282px;
+    height: 68px;
+    line-height: 68px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #60265c;
+    letter-spacing: 1px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+}
+.redact-button:hover {
+    background-color: #7c4c79;
+}
+.button-container {
+   text-align: center;
+}

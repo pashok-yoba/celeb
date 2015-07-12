@@ -1,0 +1,199 @@
+.popupLayer {
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 100;
+}
+
+.popup {
+    width: 340px;
+    background: #60265c;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    /*position: absolute;*/
+    z-index: 200;
+}
+
+.popupContent {
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.7);
+}
+
+.popupHeader {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.popupText {
+    font-style: italic;
+    max-height: 200px;
+    /*overflow-y: scroll;*/
+}
+
+/* Concrete styles */
+.select {
+    display: inline-block;
+    width: 60px;
+    overflow: hidden;
+}
+
+.select select {
+    background: white;
+    width: 80px;
+    color: black;
+    padding: 0.5em 0.25em;
+    font-size: 16px;
+    text-indent: 14px;
+    box-sizing: border-box;
+}
+
+.select option {
+
+}
+
+#year {
+    text-indent: 3px;
+}
+.wrong-password {
+    padding-top: 31px;
+}
+.wrong-check {
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.wrong-label {
+    text-transform: uppercase;
+    color: white;
+    font-size: 10px;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 37px;
+}
+.wrong-link {
+    display: inline-block;
+    font-size: 10px;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: underline;
+    letter-spacing: 1px;
+}
+.wrong-link:hover {
+    text-decoration: none;
+}
+.wrong-checked {
+    position: absolute;
+    display: none;
+    width: 15px;
+    height: 15px;
+    top: -2px;
+    left: -1px;
+    background-image: url(../images/gal-2.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.wrong-checkbox {
+    display: none;
+}
+.wrong-submit {
+    width: 109px;
+    height: 42px;
+    font-size: 11px;
+    line-height: 42px;
+    color: white;
+    font-family: Georgia, sans-serif;
+    text-align: center;
+    background-color: #60265c;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+}
+.wrong-submit:hover {
+    background-color: #7c4c79;
+}
+.content-thanks {
+    padding: 90px 20px 90px 20px;
+}
+.new-password {
+    padding-top: 13px;
+}
+.password-name {
+    width: 190px;
+    height: 30px;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    font-family: Oranienbaum, sans-serif;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.password-submit {
+    width: 220px;
+    height: 42px;
+    font-size: 11px;
+    line-height: 42px;
+    color: white;
+    font-family: Georgia, sans-serif;
+    text-align: center;
+    background-color: #60265c;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    text-transform: uppercase;
+}
+.age-submit {
+    margin-top: 36px;
+     width: 110px;
+     height: 42px;
+     font-size: 11px;
+     line-height: 42px;
+     color: white;
+     font-family: Georgia, sans-serif;
+     text-align: center;
+     background-color: #60265c;
+     letter-spacing: 1px;
+     cursor: pointer;
+     border: 2px solid #ffffff;
+     text-transform: uppercase;
+ }
+.age-submit:hover {
+    background-color: #7c4c79;
+}
+.age-check {
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.age-checked {
+    position: absolute;
+    display: none;
+    width: 15px;
+    height: 15px;
+    top: -2px;
+    left: -1px;
+    background-image: url(../images/gal-2.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.age-checkbox {
+    display: none;
+}
+.age-container {
+    padding-top: 20px;
+}

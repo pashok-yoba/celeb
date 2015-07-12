@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <title>О нас</title>
+</head>
+
+<body>
+<script>
+    /*$.fn.wheel = function (callback) {
+        return this.each(function () {
+            $(this).on('mousewheel DOMMouseScroll', function (e) {
+                e.delta = null;
+                if (e.originalEvent) {
+                    if (e.originalEvent.wheelDelta) e.delta = e.originalEvent.wheelDelta/-1;
+                    if (e.originalEvent.deltaY) e.delta = e.originalEvent.deltaY;
+                    if (e.originalEvent.detail) e.delta = e.originalEvent.detail;
+                }
+
+                if (typeof callback == 'function') {
+                    callback.call(this, e);
+                }
+            });
+        });
+    };
+    $(document).wheel(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var top = $(window).scrollTop() + e.delta*3;
+        $('body,html').stop().animate({scrollTop: top}, 500);
+    });*/
+    $(window).bind('scroll',function(e){
+        parallaxScroll();
+    });
+    $(document).ready(function() {
+        parallaxScroll();
+        $('.menuIcon').click(function(){
+            var parent = $(this).parent()
+            if(parent.hasClass('Active')){
+                $('.menuNav').hide(200);
+                parent.removeClass('Active');
+            }else{
+                parent.addClass('Active');
+                $('.menuNav').show(200);
+            }
+        });
+        $('.arrow').click(function () {
+            var next,
+                    ind,
+                    parent,
+                    $this = $(this);
+
+            if($this.hasClass('left')){
+             ind = $this.parent().parent().index()-1;
+                var side1 = 'left',
+                        side2 = 'right';
+             }else{
+             ind = $this.parent().parent().index()+1;
+                var side1 = 'right',
+                        side2 = 'left';
+             }
+            parent = $this.parent().parent();
+            next = $($this.parent().parent().parent().find('.newsItem')[ind]);
+
+            if(next.hasClass('newsItem')){
+                parent.stop().fadeOut(600, function(){
+                    $(this).removeClass('newsActive');
+                    next.stop().fadeIn(600,function(){
+                        $(this).addClass('newsActive');
+                    });
+                    parallaxScroll();
+                });
+
+                /*parent.hide("slide", { direction: side1 }, 0,  function(){
+                    next.show("slide", { direction: side2 }, 0);
+                    parallaxScroll();
+                });*/
+                next.find('.newsImageName').css('opacity',1);
+                next.find('.newsImageName').css('top',50+'%');
+                for (j = 0; j < 2; j++) {
+                    var arrow = $(next.find('.arrow')[j]);
+                    arrow.css('opacity',1);
+                    arrow.css('top',50+'%');
+                }
+            }
+        });
+    });
+</script>
+
+<!-- Header -->
+<div id="header">
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#">ADVENTURE</a></li>
+            <li><a href="#">APPRECIATION</a></li>
+            <li><a href="#">CELEBRATION</a></li>
+        </ul>
+    </nav>
+    <!-- Logo -->
+    <a href="#" id="logo"></a>
+    <!-- Menu -->
+    <div id="menu" >
+        <div class="name">
+            Добрый день, <a href="#">lya Sergeevich</a>
+        </div>
+        <div class="menuIcon"></div>
+        <div class="cl"></div>
+        <div class="menuNav">
+            <ul>
+                <li><a href="#">КАБИНЕТ</a></li>
+                <li><a href="#">ГДЕ КУПИТЬ</a></li>
+                <li><a href="#">O LE CERCLE</a></li>
+                <li><a href="#">ИЗБРАННОЕ</a></li>
+                <li><a href="#">ПРИВИЛЕГИИ</a></li>
+            </ul>
+            <!-- Nav for mob -->
+            <ul id="navmob">
+                <li><a href="#">ADVENTURE</a></li>
+                <li><a href="#">APPRECIATION</a></li>
+                <li><a href="#">CELEBRATION</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Logout -->
+    <div id="logout"></div>
+</div>
+<!-- END Header -->
+<!-- News -->
+<div id="news">
+    <!-- One news -->
+    <div class="news appreciation">
+        <div class="newsItem">
+            <!-- One news image -->
+            <div class="newsImage" style="background-image: url('images/apr-1.jpg')">
+                <div class="newsImageName">MOSCOW COUNTRY CLUB</div>
+                <div class="newsImageCat">Appreciation</div>
+                <div class="arrow left"></div>
+                <div class="arrow right"></div>
+            </div>
+        </div>
+        <div class="newsItem newsActive">
+            <!-- One news image -->
+            <div class="newsImage" style="background-image: url('images/apr-2.jpg')">
+                <div class="newsImageName">MOSCOW COUNTRY CLUB</div>
+                <div class="newsImageCat">Appreciation</div>
+                <div class="arrow left"></div>
+                <div class="arrow right"></div>
+            </div>
+        </div>
+        <div class="newsItem">
+            <!-- One news image -->
+            <div class="newsImage" style="background-image: url('images/apr-3.jpg')">
+                <div class="newsImageName">MOSCOW COUNTRY CLUB</div>
+                <div class="newsImageCat">Appreciation</div>
+                <div class="arrow left"></div>
+                <div class="arrow right"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END One news -->
+</div>
+<!-- END News -->
+
+<!-- !!! -->
+
+<!-- About -->
+<div id="about" class="about">
+    <h2 class="aboutHeader">О Le Cercle</h2>
+    <div class="Line"></div>
+    <div class="aboutIntro">
+        <span class="initialPhrase">Добро пожаловать в Le Cercle</span> &mdash;
+        привилегированный круг людей, которые ценят стиль и изсканность,
+        обладают тонким вкусом и яркой индивидуальностью
+        и неравнодушны к рекрасному во всех его проявлениях.
+    </div>
+    <div class="aboutDef">
+        <ul class="aboutDefList">
+            <li class="aboutDefItem">
+                <span class="initialPhrase">Le Cercle</span> &mdash;
+                это клуб истинных ценителей и поклонников элитных шаипанских вин и выдержанных напитков.
+            </li>
+            <li class="aboutDefItem">
+                <span class="initialPhrase">Le Cercle</span> &mdash;
+                это уникальные возможности для всех, кто стремится расширить свои знания о благородных напитках,
+                раскрыть секрет их создания и научиться познавать их неповторимые качества,
+                получая истинное удовольствие.
+            </li>
+        </ul>
+    </div>
+    <h2 class="aboutHeader">Каждому участнику Le Cercle мы рады открыть целый мир привилегий:</h2>
+    <div class="Line"></div>
+    <ul class="aboutPrivList">
+        <li class="aboutPrivItem">
+            <div class="aboutPrivItemIcon">
+                <img src="images/Сocktail.png" alt="icon" class="aboutPrivItemIconImg">
+            </div>
+            <div class="aboutPrivItemText">Персональные приглашения на менторинговые сессии
+                и закрытые дегустации напитков премиум-класса,
+                в том числе редких и коллекционных, а также напитков &ndash;
+                победителей престижных международных выставок;</div>
+        </li>
+        <li class="aboutPrivItem">
+            <div class="aboutPrivItemIcon">
+                <img src="images/Star.png" alt="icon" class="aboutPrivItemIconImg">
+            </div>
+            <div class="aboutPrivItemText">Встречи с известными сомелье
+                и экспертами по элитному алкоголю;</div>
+        </li>
+        <li class="aboutPrivItem">
+            <div class="aboutPrivItemIcon">
+                <img src="images/Bubble.png" alt="icon" class="aboutPrivItemIconImg">
+            </div>
+            <div class="aboutPrivItemText">Эксклюзивные репортажи с самых ярких,
+                зрелищных и интересных мероприятий;</div>
+        </li>
+        <li class="aboutPrivItem">
+            <div class="aboutPrivItemIcon">
+                <img src="images/Plane.png" alt="icon" class="aboutPrivItemIconImg">
+            </div>
+            <div class="aboutPrivItemText">Уникальная возможность посетить живописные виноградники,
+                легендарные вискикурни, знаменитые коньячные и шампанские дома мира
+                и погрузиться в загадочный мир создания великих вин и выдержанных напитков;</div>
+        </li>
+        <li class="aboutPrivItem">
+            <div class="aboutPrivItemIcon">
+                <img src="images/Badge.png" alt="icon" class="aboutPrivItemIconImg">
+            </div>
+            <div class="aboutPrivItemText">Приоритетное право покупки нашей продукции,
+                статусных новинок и лимитированных серий по специальным ценам.</div>
+        </li>
+    </ul>
+    <div class="aboutOutro">
+        Желаем вам новых впечатлений и надеемся, что они оставят незабываемое послевкусие.
+    </div>
+    <div class="aboutBidButtonArea">
+        <a href="#" class="aboutBidButton">Подать заявку</a>
+    </div>
+</div>
+<!--END About -->
+<!-- Footer -->
+<div id="footer">
+    <!-- Nav -->
+    <div class="footerNav">
+        <ul>
+            <li><a href="#">О Le Cercle</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Agreement Licenses</a></li>
+        </ul>
+    </div>
+    <!-- Dotted line -->
+    <div class="Line"></div>
+    <!-- Copyright -->
+    <div class="footerCr">© PERNOD RICARD 2015. ALL RIGHTS RESRVED.</div>
+    <div class="footerLogo"></div>
+</div>
+<!-- END Footer -->
+
+</body>
+</html>

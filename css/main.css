@@ -1,0 +1,488 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+
+}
+body {
+    background: #fff;
+    height: 100%;
+    font-family: Georgia;
+    font-weight: 300;
+    font-size: 24px;
+    color: black;
+    position: relative;
+    /*-width: 1024px;*/
+    margin: 0 auto;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+@font-face {
+    font-family: 'Oranienbaum';
+    src: url('../fonts/Oranienbaum.eot');
+    src: url('../fonts/Oranienbaum.eot') format('embedded-opentype'),
+    url('../fonts/Oranienbaum.woff2') format('woff2'),
+    url('../fonts/Oranienbaum.woff') format('woff'),
+    url('../fonts/Oranienbaum.ttf') format('truetype'),
+    url('../fonts/Oranienbaum.svg#Oranienbaum') format('svg');
+}
+
+.cl{clear: both;}
+#header{
+    height: 240px;
+    position: relative;
+    z-index: 2;
+}
+#logo{
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -86px;
+    width: 172px; 
+    height: 130px; 
+    margin-top: 60px; 
+    background: url("../images/logo.png")
+}
+#nav {
+    position: absolute;
+    left: 46px;
+    top: 0;
+    height: 88px;
+    line-height: 88px;
+}
+#navmob{
+    display: none
+}
+#nav ul {
+    margin: 0;
+}
+
+#nav ul li {
+    display: inline-block;
+    margin-left: 0;
+    font-size: 0.5em;
+}
+
+#nav ul li a {
+    color: #60265c;
+    text-decoration: none;
+    height: 88px;
+    line-height: 88px;
+    padding: 0;
+    margin-right: 20px;
+    outline: 0;
+    letter-spacing: 1px;
+}
+#nav ul li a:hover{
+    text-decoration: underline;
+}
+#nav ul li a.location{
+    border-bottom: 2px solid #60265c;
+}
+#nav ul li a.location:hover{
+    text-decoration: none;
+}
+#menu{
+    width: 225px !important;
+    padding: 15px 0 0 0;
+    position: fixed;
+    right: 85px;
+    top: 20px;
+
+}
+
+/*Стили для клика*/
+#menu.Active{
+    background-color: #60265c;
+}
+#menu.Active .menuNav{
+    display: none;
+}
+#menu.Active .menuIcon{
+    background-position: center -21px;
+}
+#menu.Active .name{
+    color: white;
+}
+#menu.Active .name a{
+    color: #ffffff;
+    text-decoration: none;
+}
+/*Стили для ховера*/
+/*#menu:hover{
+    background-color: #60265c;
+}
+#menu:hover .menuNav{
+    display: block;
+}
+#menu:hover .menuIcon{
+    background-position: center -21px;
+}
+#menu:hover .name{
+    color: white;
+}
+#menu:hover .name span{
+    color: #ffffff;
+}
+*/
+#menu .menuIcon{
+    width: 24px;
+    height: 21px;
+    background: url("../images/menu.png") center 0 no-repeat;
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+}
+#menu .name{
+    font-size: 0.54em;
+    font-style: italic;
+    color: black;
+    width: 160px;
+    float: left;
+    padding-left: 15px;
+}
+#menu .name a{
+    color: #440040;
+    text-decoration: none;
+}
+#menu .menuNav{
+    padding-top: 30px;
+    display: none;
+    width: 100% !important;
+}
+
+#menu .menuNav ul{
+    margin: 0;
+}
+#menu .menuNav ul li{
+    margin: 0;
+    border-top: 1px solid #8a5f87;
+    font-size: 0.375em;
+    color: #ffffff;
+}
+#menu .menuNav ul li a{
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    letter-spacing: 2px;
+    padding: 10px 15px 10px 15px;
+}
+#menu .menuNav ul li a:hover{
+    background-color: #7c4c79;
+}
+#logout{
+    width: 23px;
+    height: 21px;
+    position: fixed;
+    top: 33px;
+    right: 44px;
+    cursor: pointer;
+    background: url("../images/logout.png") center center no-repeat;
+}
+#news .newsImage{
+    height: 528px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-size: 100% auto;
+    overflow: hidden;
+}
+#news .newsImage .newsImageName{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-size: 3em;
+    color: #ffffff;
+    font-family: Oranienbaum;
+    text-align: center;
+    margin-top: -44px;
+    transition: all 0.5s linear 0s;
+}
+#news .newsImage .newsImageCat{
+    position: absolute;
+    bottom: -77px;
+    left: 50%;
+    margin-left: -77px;
+    width: 154px; height: 154px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 120px;
+    font-size: 0.7em;
+    font-style: italic;
+ }
+#news .news.appreciation .newsImage .newsImageCat{
+    background-image:url("../images/appreciation.png");
+}
+#news .news.celebration .newsImage .newsImageCat{
+    background-image:url("../images/celebration.png");
+}
+#news .news.adventure .newsImage .newsImageCat{
+    background-image:url("../images/adventure.png");
+}
+#news .newsText{
+    height: 550px;
+    text-align: center;
+    position: relative;
+}
+#news .newsText .newsTextBlock{
+    position: relative;
+    width: 865px;
+    margin: 0 auto;
+    top: 125px;
+}
+.Line{
+    height: 1px;
+    background: url("../images/dot.png") center center no-repeat;
+    padding: 25px;
+}
+#news .newsText .newsTextText{
+    padding: 0 25px;
+    font-style: italic;
+}
+#news .newsText .newsTextName{
+    font-size: 3em;
+    color: #000000;
+    font-family: Oranienbaum;
+}
+#news .newsText .newsTextBut{
+    width: 156px;
+    height: 37px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -78px;
+    font-size: 0.4em;
+    line-height: 37px;
+    color: white;
+    text-align: center;
+    background-color: #60265c;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+#news .newsText .newsTextBut:hover{
+    background-color: #7c4c79;
+}
+#news .newsText .newsTextFav{
+    padding-right: 45px;
+    position: absolute;
+    font-weight: bold;
+    bottom: 50px;
+    right: 44px;
+    cursor: pointer;
+    height: 32px;
+    line-height: 32px;
+    color: #60265c;
+    font-size: 0.4em;
+    letter-spacing: 3px;
+    background: url("../images/fav.png") right center no-repeat;
+}
+#news .newsText .newsTextFav:hover{
+    text-decoration: underline;
+}
+.arrow{
+    width: 41px;
+    height: 77px;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    margin-top: -38px;
+    display: block;
+    transition: all 0.5s linear 0s;
+}
+.arrow.left{
+    background: url("../images/arrow-left.png") center center no-repeat;
+    left: 44px;
+}
+.arrow.left.dark{
+    background: url("../images/arrow-left-dark.png") center center no-repeat;
+}
+.arrow.right{
+    background: url("../images/arrow-right.png") center center no-repeat;
+    right: 44px;
+}
+.arrow.right.dark{
+    background: url("../images/arrow-right-dark.png") center center no-repeat;
+}
+#footer{
+    position: relative;
+    background-color: #c6cdd1;
+    height: 250px;
+}
+#footer .footerNav{
+    padding-top: 45px;
+    text-align: center;
+}
+#footer .footerNav ul{
+    margin: 0;
+}
+#footer .footerNav ul li {
+    display: inline-block;
+    margin-left: 0;
+    font-size: 0.58em;
+    margin-right: 70px;
+}
+
+#footer .footerNav ul li a {
+    display: block;
+    color: #60265c;
+    text-decoration: none;
+    padding: 0;
+    outline: 0;
+}
+#footer .footerNav ul li:last-child{
+    margin-right: 0;
+}
+#footer .footerNav ul li a:hover{
+    text-decoration: underline;
+}
+#footer .footerCr{
+    font-size: 0.58em;
+    text-align: center;
+    font-family: Arial;
+}
+#footer .footerLogo{
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    margin-left: -80px;
+    width: 161px;
+    height: 42px;
+    background: url("../images/logofooter.jpg") center center no-repeat;
+}
+#more{
+    padding: 20px 0 50px 0;
+    text-align: center;
+}
+#more .moreButton{
+    padding-right: 65px;
+    display: inline-block;
+    zoom: 1;
+    *display:inline;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+    height: 46px;
+    line-height: 46px;
+    color: #60265c;
+    font-size: 0.625em;
+    letter-spacing: 3px;
+    background: url("../images/more.png") right center no-repeat;
+}
+#more .moreButton:hover{
+    text-decoration: underline;
+}
+@media only screen and (max-width: 865px) {
+    body{
+        /*min-width: 480px;*/
+        font-size: 28px;
+    }
+    #news .newsImage{
+        background-size: auto;
+    }
+    #news .newsText .newsTextBut{
+        width: 270px;
+        margin-left: -135px;
+        height: 77px;
+        font-size: 0.8em;
+        line-height: 77px;
+        position: static;
+        margin: 0 auto;
+    }
+    #news .newsText{
+        height: auto;
+        padding-bottom: 50px;
+    }
+    #news .newsText .newsTextBlock{
+        width: 100%;
+        top: 0;
+        padding-top:60px;
+        padding-bottom: 50px;
+    }
+    #footer .footerNav ul li{
+        /*font-size: 1em;*/
+    }
+    #footer .footerCr{
+        /*font-size: 1em;*/
+    }
+    #news .newsText .newsTextFav{
+        height: 64px;
+        font-size: 0;
+        color: white;
+        width: 0;
+        bottom: 60px;
+        overflow: hidden;
+        font-weight: bold;
+        line-height: 64px;
+        padding-right: 64px;
+        background-size: auto 100%;
+    }
+    #news .newsText .newsTextFav:hover{
+        text-decoration: none;
+    }
+    #menu{
+        width: 50% !important;
+        right: 100px;
+        position: absolute;
+    }
+    #menu .menuNav ul li{
+        font-size: 0.9em
+    }
+    #menu .menuNav ul li a{
+        padding: 30px 15px 30px 45px;
+    }
+    #menu .name{
+        font-size: 1.1em;
+        padding-right: 60px;
+        padding-left: 45px;
+        width: auto;
+        float: none;
+    }
+    #nav{
+        display: none;
+    }
+    #menu .menuIcon{
+        background-size: 100% 200%;
+        float: none;
+        position: absolute;
+        right: 0;
+        top: 15px;
+        width: 48px;
+        height: 42px;
+    }
+    #menu.Active .menuIcon{
+        background-position: center -42px;
+    }
+
+    #logout{
+        background-size: 100% auto;
+        width: 46px;
+        height: 42px;
+        position: absolute;
+    }
+    #navmob{display: block}
+    #logo{
+        left: 0;
+        margin: 30px 0 0 30px;
+    }
+    #menu .name span{
+        display: block;
+        padding-top: 7px;
+    }
+    #news .newsImage .newsImageName{
+        margin-top: -49px;
+    }
+}
+
+/* Slider */
+.newsItem{
+    display: none;
+}
+.newsItem.newsActive{
+    display: block;
+}

@@ -1,0 +1,72 @@
+.where-buy {
+    height: 528px;
+    background-image: url('../images/where-buy.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.where-name {
+    font-family: Oranienbaum;
+    font-size: 72px;
+    text-align: center;
+    padding-top: 249px;
+    color: white;
+    text-transform: uppercase;
+}
+.wrapper-center {
+    width: 1001px;
+    margin: 0 auto;
+    padding-top: 104px;
+}
+.brands-where{
+    font-family: Oranienbaum;
+    font-size: 52px;
+}
+.lines{
+    height: 1px;
+    background: url("../images/pixel-dotted.jpg") center center repeat-x;
+    padding: 25px 0 25px 0;
+}
+.brands-about {
+    font-family: Oranienbaum;
+    font-size: 40px;
+    text-transform: uppercase;
+    width: 910px;
+    padding-bottom: 67px;
+}
+.net-item {
+    display: inline-block;
+    width: 49%;
+    color: #60265c;
+    text-decoration: underline;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+.net-item:hover {
+    text-decoration: none;
+}
+.moscow-stores-name {
+    padding-top: 73px;
+    font-size: 26px;
+    font-style: italic;
+}
+.moscow-stores {
+    list-style-type: none;
+    padding-bottom: 194px;
+}
+.moscow-item {
+    padding-top: 34px;
+    display: inline-block;
+    width: 49%;
+}
+.moscow-link {
+    color: #60265c;
+    font-size: 13px;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+.moscow-link:hover {
+  text-decoration: none;
+}

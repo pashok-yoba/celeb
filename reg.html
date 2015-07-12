@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Untitled Document</title>
+    <link rel="stylesheet" type="text/css" href="css/edit.css">
+</head>
+
+<body>
+<script>
+    /*$.fn.wheel = function (callback) {
+     return this.each(function () {
+     $(this).on('mousewheel DOMMouseScroll', function (e) {
+     e.delta = null;
+     if (e.originalEvent) {
+     if (e.originalEvent.wheelDelta) e.delta = e.originalEvent.wheelDelta/-1;
+     if (e.originalEvent.deltaY) e.delta = e.originalEvent.deltaY;
+     if (e.originalEvent.detail) e.delta = e.originalEvent.detail;
+     }
+
+     if (typeof callback == 'function') {
+     callback.call(this, e);
+     }
+     });
+     });
+     };
+     $(document).wheel(function (e) {
+     e.preventDefault();
+     e.stopPropagation();
+     var top = $(window).scrollTop() + e.delta*3;
+     $('body,html').stop().animate({scrollTop: top}, 500);
+     });*/
+    $(window).bind('scroll',function(e){
+        parallaxScroll();
+    });
+    $(document).ready(function() {
+        parallaxScroll();
+        $('.menuIcon').click(function(){
+            var parent = $(this).parent()
+            if(parent.hasClass('Active')){
+                $('.menuNav').hide(200);
+                parent.removeClass('Active');
+            }else{
+                parent.addClass('Active');
+                $('.menuNav').show(200);
+            }
+        });
+        $('.arrow').click(function () {
+            var next,
+                    ind,
+                    parent,
+                    $this = $(this);
+
+            if($this.hasClass('left')){
+                ind = $this.parent().parent().index()-1;
+                var side1 = 'left',
+                        side2 = 'right';
+            }else{
+                ind = $this.parent().parent().index()+1;
+                var side1 = 'right',
+                        side2 = 'left';
+            }
+            parent = $this.parent().parent();
+            next = $($this.parent().parent().parent().find('.newsItem')[ind]);
+
+            if(next.hasClass('newsItem')){
+                parent.stop().fadeOut(600, function(){
+                    $(this).removeClass('newsActive');
+                    next.stop().fadeIn(600,function(){
+                        $(this).addClass('newsActive');
+                    });
+                    parallaxScroll();
+                });
+
+                /*parent.hide("slide", { direction: side1 }, 0,  function(){
+                 next.show("slide", { direction: side2 }, 0);
+                 parallaxScroll();
+                 });*/
+                next.find('.newsImageName').css('opacity',1);
+                next.find('.newsImageName').css('top',50+'%');
+                for (j = 0; j < 2; j++) {
+                    var arrow = $(next.find('.arrow')[j]);
+                    arrow.css('opacity',1);
+                    arrow.css('top',50+'%');
+                }
+            }
+        });
+    });
+</script>
+<script>
+    $(function(){
+        $('.radio-outer').on('click', function(){
+            $(this).parent().find('.radio-inner').removeClass('checked');
+            $(this).parent().find('input').attr('checked', false);
+            $(this).find('.radio-inner').addClass('checked');
+            var name = $(this).attr('id');
+            $('#'+name+'-radio').attr('checked', true);
+        })
+    })
+</script>
+<!-- Header -->
+<div id="header">
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#">ADVENTURE</a></li>
+            <li><a href="#">APPRECIATION</a></li>
+            <li><a href="#">CELEBRATION</a></li>
+        </ul>
+    </nav>
+    <!-- Logo -->
+    <a href="#" id="logo"></a>
+    <!-- Menu -->
+    <div id="menu" >
+        <div class="name">
+            Добрый день, <a href="#">lya Sergeevich</a>
+        </div>
+        <div class="menuIcon"></div>
+        <div class="cl"></div>
+        <div class="menuNav">
+            <ul>
+                <li><a href="#">КАБИНЕТ</a></li>
+                <li><a href="#">ГДЕ КУПИТЬ</a></li>
+                <li><a href="#">O LE CERCLE</a></li>
+                <li><a href="#">ИЗБРАННОЕ</a></li>
+                <li><a href="#">ПРИВИЛЕГИИ</a></li>
+            </ul>
+            <!-- Nav for mob -->
+            <ul id="navmob">
+                <li><a href="#">ADVENTURE</a></li>
+                <li><a href="#">APPRECIATION</a></li>
+                <li><a href="#">CELEBRATION</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Logout -->
+    <div id="logout"></div>
+</div>
+<!-- END Header -->
+<div class="reg-header">
+    <h1>Регистрация</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint quas, odit sunt. Cumque, nam repellendus temporibus maiores hic, numquam vitae reiciendis obcaecati saepe magni omnis assumenda provident ullam placeat.</p>
+</div>
+<div class="wrapper">
+    <table class="information">
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    ИМЯ
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    отчество
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Имя" name="name">
+            </td>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Отчество" name="patronymic">
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Фамилия
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    ПОЛ
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Фамилия" name="surname">
+            </td>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="man" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="man-radio" class="edit-radio" name="male" type="radio" value="man">
+                    <div class="check">
+                        Мужской
+                    </div>
+                    <div id="woman" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="woman-radio" class="edit-radio" name="male" type="radio" value="woman">
+                    <div class="check">
+                        Женский
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    дата рождения
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    E-maiL
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <div class="edit-age">
+                    <select name="month" id="month" class="edit-select">
+                        <option value="01">Январь</option>
+                        <option value="02">Февраль</option>
+                        <option value="03">Март</option>
+                        <option value="04">Апрель</option>
+                        <option value="05">Май</option>
+                        <option value="06">Июнь</option>
+                        <option value="07">Июль</option>
+                        <option value="08">Август</option>
+                        <option value="09">Сентябрь</option>
+                        <option value="10">Октябрь</option>
+                        <option value="11">Ноябрь</option>
+                        <option value="12">Декабрь</option>
+                    </select>
+                    <select name="day" id="day" class="edit-select">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <select name="year" id="year" class="edit-select">
+                        <option value="1930">1930</option>
+                        <option value="1931">1931</option>
+                        <option value="1932">1932</option>
+                        <option value="1933">1933</option>
+                        <option value="1934">1934</option>
+                        <option value="1935">1935</option>
+                        <option value="1936">1936</option>
+                        <option value="1937">1937</option>
+                        <option value="1938">1938</option>
+                        <option value="1939">1939</option>
+                        <option value="1940">1940</option>
+                        <option value="1941">1941</option>
+                        <option value="1942">1942</option>
+                        <option value="1943">1943</option>
+                        <option value="1944">1944</option>
+                        <option value="1945">1945</option>
+                        <option value="1946">1946</option>
+                        <option value="1947">1947</option>
+                        <option value="1948">1948</option>
+                        <option value="1949">1949</option>
+                        <option value="1950">1950</option>
+                        <option value="1951">1951</option>
+                        <option value="1952">1952</option>
+                        <option value="1953">1953</option>
+                        <option value="1954">1954</option>
+                        <option value="1955">1955</option>
+                        <option value="1956">1956</option>
+                        <option value="1957">1957</option>
+                        <option value="1958">1958</option>
+                        <option value="1959">1959</option>
+                        <option value="1960">1960</option>
+                        <option value="1961">1961</option>
+                        <option value="1962">1962</option>
+                        <option value="1963">1963</option>
+                        <option value="1964">1964</option>
+                        <option value="1965">1965</option>
+                        <option value="1966">1966</option>
+                        <option value="1967">1967</option>
+                        <option value="1968">1968</option>
+                        <option value="1969">1969</option>
+                        <option value="1970">1970</option>
+                        <option value="1971">1971</option>
+                        <option value="1972">1972</option>
+                        <option value="1973">1973</option>
+                        <option value="1974">1974</option>
+                        <option value="1975">1975</option>
+                        <option value="1976">1976</option>
+                        <option value="1977">1977</option>
+                        <option value="1978">1978</option>
+                        <option value="1979">1979</option>
+                        <option value="1980">1980</option>
+                        <option value="1981">1981</option>
+                        <option value="1982">1982</option>
+                        <option value="1983">1983</option>
+                        <option value="1984">1984</option>
+                        <option value="1985">1985</option>
+                        <option value="1986">1986</option>
+                        <option value="1987">1987</option>
+                        <option value="1988">1988</option>
+                        <option value="1989">1989</option>
+                        <option value="1990">1990</option>
+                        <option value="1991">1991</option>
+                        <option value="1992">1992</option>
+                        <option value="1993">1993</option>
+                        <option value="1994">1994</option>
+                        <option value="1995">1995</option>
+                        <option value="1996">1996</option>
+                        <option value="1997">1997</option>
+                        <option value="1998">1998</option>
+                        <option value="1999">1999</option>
+                        <option value="2000">2000</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                    </select>
+                </div>
+            </td>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="e-mail" name="email">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    дополнительный e-mail
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    городской телефон
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Доп. e-mail">
+            </td>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Гор. телефон" name="cityphone">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    мобильный телефон
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    ГОРОД
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Моб. телефон" name="mobilephone">
+            </td>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Город" name="city">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    адрес
+                </p>
+            </td>
+            <td class="column">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Город" name="city">
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    <label><input type="checkbox" name="communication"> Согласие на коммуникацию</label>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <div class="line-all"></div>
+    <table class="information">
+        <tr>
+            <td class="column">
+                <p class="item-name">Компания</p>
+            </td>
+            <td class="column">
+                <p class="item-name">Должность</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Компания" name="company">
+            </td>
+            <td class="column">
+                <select name="place" id="place" class="edit-select">
+                    <option value="Сотрудник">Сотрудник</option>
+                    <option value="Босс">Босс</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <p class="item-name">Язык</p>
+            </td>
+            <td class="column">
+                <p class="item-name">Предпочитаемый способ связи</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="rus" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="rus-radio" class="edit-radio" name="lang" type="radio" value="rus">
+                    <div class="check">
+                        Русский
+                    </div>
+                    <div id="eng" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="eng-radio" class="edit-radio" name="lang" type="radio" value="eng">
+                    <div class="check">
+                        Английский
+                    </div>
+                </div>
+            </td>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="email" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="email-radio" class="edit-radio" name="commtype" type="radio" value="email">
+                    <div class="check">
+                        E-mail
+                    </div>
+                    <div id="phone" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="phone-radio" class="edit-radio" name="commtype" type="radio" value="phone">
+                    <div class="check">
+                        Телефон
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Фамилия ассистента
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Имя ассистента
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Имя" name="assname">
+            </td>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="Фамилия" name="asssurname">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    E-mail ассистента
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Телефон ассистента
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="email" name="assemail">
+            </td>
+            <td class="column">
+                <input class="edit-text" type="text" placeholder="телефон" name="assphone">
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <p class="item-name">Тип телефона ассистента</p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="phone-city" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="phone-city-radio"class="edit-radio" name="commtype" type="radio" value="city">
+                    <div class="check">
+                        Городской
+                    </div>
+                    <div id="phone-mobile" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="phone-mobile-radio" class="edit-radio" name="commtype" type="radio" value="mob">
+                    <div class="check">
+                        Мобильный
+                    </div>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="line-all"></div>
+    <table class="information">
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    любимый вид алкоголя
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    любимый алкогольный бренд
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <select name="alco" id="alco" class="edit-select">
+                    <option value="Бражка">Бражка</option>
+                    <option value="ром">Ром</option>
+                    <option value="Виски">Виски</option>
+                    <option value="Боярышник">Боярышник</option>
+                </select>
+            </td>
+            <td class="column">
+                <select name="brand" id="brand" class="edit-select">
+                    <option value="Виноградный день">Виноградный день</option>
+                    <option value="Bacardi">Bacardi</option>
+                    <option value="Jack Daniels">Jack Daniels</option>
+                    <option value="Blazer">Blazer</option>
+                </select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Где вы обычно приобретаете алкоголь
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Заинтересованы ли вы получать<br />
+                    новости брендов, входящих в Le Cercle?
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    <select name="place" id="place" class="edit-select">
+                        <option value="Ларёк">Ларёк</option>
+                        <option value="Duty Free">Duty Free</option>
+                        <option value="Аптека">Аптека</option>
+                    </select>
+                </p>
+            </td>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="interest-yes" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="interest-yes-radio" class="edit-radio" name="commtype" type="radio" value="yes">
+                    <div class="check">
+                        Да
+                    </div>
+                    <div id="interest-none" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="interest-none-radio" class="edit-radio" name="commtype" type="radio" value="no">
+                    <div class="check">
+                        Нет
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Комментарии
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Заинтересованы ли вы получать приглашения<br/>
+                    на мероприятия брендов, входящих в Le Cercle?
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column" rowspan="3">
+                    <textarea name="comments" id="" class="edit-text edit-textarea"></textarea>
+            </td>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="prigl-yes" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="prigl-yes-radio" class="edit-radio" name="commtype" type="radio" value="yes">
+                    <div class="check">
+                        Да
+                    </div>
+                    <div id="prigl-none" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="prigl-none-radio" class="edit-radio" name="commtype" type="radio" value="no">
+                    <div class="check">
+                        Нет
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Заинтересованы ли вы<br />
+                    в приобретении алкоголя?
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="column">
+                <div class="choose-radio">
+                    <div id="interest-alc-yes" class="radio-outer">
+                        <div class="radio-inner checked"></div>
+                    </div>
+                    <input id="interest-alc-yes-radio" class="edit-radio" name="commtype" type="radio" value="yes">
+                    <div class="check">
+                        Да
+                    </div>
+                    <div id="interest-alc-none" class="radio-outer">
+                        <div class="radio-inner"></div>
+                    </div>
+                    <input id="interest-alc-none-radio" class="edit-radio" name="commtype" type="radio" value="no">
+                    <div class="check">
+                        Нет
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="reg-details">
+        <p class="detail-1">* Обязательные поля</p>
+        <p class="detail-2">** Подача заявки не гарантирует получение доступа. Программа гарантирует участие персонам, оставившим<br/>
+            персональные данные и согласие на коммуникацию на мероприятиях брендов, входящих в Le Сercle. </p>
+    </div>
+    <div class="button-container">
+        <div class="redact-button">ПОДАТЬ ЗАЯВКУ</div>
+    </div>
+</div>
+<!-- Footer -->
+<div id="footer">
+    <!-- Nav -->
+    <div class="footerNav">
+        <ul>
+            <li><a href="#">О Le Cercle</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Agreement Licenses</a></li>
+        </ul>
+    </div>
+    <!-- Dotted line -->
+    <div class="Line"></div>
+    <!-- Copyright -->
+    <div class="footerCr">© PERNOD RICARD 2015. ALL RIGHTS RESRVED.</div>
+    <div class="footerLogo"></div>
+</div>
+<!-- END Footer -->
+
+</body>
+</html>

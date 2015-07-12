@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Untitled Document</title>
+</head>
+
+<body>
+<script>
+    $.fn.wheel = function (callback) {
+        return this.each(function () {
+            $(this).on('mousewheel DOMMouseScroll', function (e) {
+                e.delta = null;
+                if (e.originalEvent) {
+                    if (e.originalEvent.wheelDelta) e.delta = e.originalEvent.wheelDelta/-1;
+                    if (e.originalEvent.deltaY) e.delta = e.originalEvent.deltaY;
+                    if (e.originalEvent.detail) e.delta = e.originalEvent.detail;
+                }
+
+                if (typeof callback == 'function') {
+                    callback.call(this, e);
+                }
+            });
+        });
+    };
+    $(document).wheel(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var top = $(window).scrollTop() + e.delta*3;
+        $('body,html').stop().animate({scrollTop: top}, 500);
+    });
+    $(window).bind('scroll',function(e){
+        parallaxScroll();
+    });
+    $(document).ready(function() {
+        parallaxScroll();
+        $('.menuIcon').click(function(){
+            var parent = $(this).parent()
+            if(parent.hasClass('Active')){
+                $('.menuNav').hide(200);
+                parent.removeClass('Active');
+            }else{
+                parent.addClass('Active');
+                $('.menuNav').show(200);
+            }
+        });
+    });
+</script>
+
+<!-- Header -->
+<div id="header">
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#" class="location">ADVENTURE</a></li>
+            <li><a href="#">APPRECIATION</a></li>
+            <li><a href="#">CELEBRATION</a></li>
+        </ul>
+    </nav>
+    <!-- Logo -->
+    <a href="#" id="logo"></a>
+    <!-- Menu -->
+    <div id="menu" >
+        <div class="name">
+            Добрый день, <a href="#">lya Sergeevich</a>
+        </div>
+        <div class="menuIcon"></div>
+        <div class="cl"></div>
+        <div class="menuNav">
+            <ul>
+                <li><a href="#">КАБИНЕТ</a></li>
+                <li><a href="#">ГДЕ КУПИТЬ</a></li>
+                <li><a href="#">O LE CERCLE</a></li>
+                <li><a href="#">ИЗБРАННОЕ</a></li>
+                <li><a href="#">ПРИВИЛЕГИИ</a></li>
+            </ul>
+            <!-- Nav for mob -->
+            <ul id="navmob">
+                <li><a href="#">ADVENTURE</a></li>
+                <li><a href="#">APPRECIATION</a></li>
+                <li><a href="#">CELEBRATION</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Logout -->
+    <div id="logout"></div>
+</div>
+<!-- END Header -->
+<!-- News -->
+<div id="news">
+    <!-- One news -->
+    <div class="news adventure">
+        <!-- One news image -->
+        <div class="newsImage" style="background-image: url('images/adv-1.jpg')">
+            <div class="newsImageName">MOSCOW BOAT SHOW</div>
+            <div class="newsImageCat">Adventure</div>
+        </div>
+        <!-- One news text -->
+        <div class="newsText">
+            <div class="newsTextBlock">
+                <div class="newsTextName">MOSCOW BOAT SHOW</div>
+                <div class="Line"></div>
+                <div class="newsTextText">
+                    В 2015 году площадь «Московского Боут Шоу» увеличится до 55 000 кв. метров. Участие в 8-й по счету выставке примут более 400 крупных российских и зарубежных компаний. Произойдет расширение экспозиции за счет появления новых и увеличения уже существующих тематических разделов.
+                </div>
+            </div>
+            <!-- One news button and fav -->
+            <div class="newsTextBut">ПОДРОБНОСТИ</div>
+            <div class="newsTextFav">В ИЗБРАННОЕ</div>
+        </div>
+    </div>
+    <!--End One news -->
+    <!-- One news -->
+    <div class="news adventure">
+        <!-- One news image -->
+        <div class="newsImage" style="background-image: url('images/adv-2.jpg')">
+            <div class="newsImageName">NO-LAND EXPECTATION</div>
+            <div class="newsImageCat">Adventure</div>
+        </div>
+        <!-- One news text -->
+        <div class="newsText">
+            <div class="newsTextBlock">
+                <div class="newsTextName">NO-LAND EXPECTATION</div>
+                <div class="Line"></div>
+                <div class="newsTextText">
+                    Уникальный формат мероприятия в этом году обусловлен повышенным интересом московской публики.
+                </div>
+            </div>
+            <!-- One news button and fav -->
+            <div class="newsTextBut">ПОДРОБНОСТИ</div>
+            <div class="newsTextFav">В ИЗБРАННОЕ</div>
+        </div>
+    </div>
+    <!--End One news -->
+    <!-- One news -->
+    <div class="news adventure">
+        <!-- One news image -->
+        <div class="newsImage" style="background-image: url('images/adv-3.jpg')">
+            <div class="newsImageName">REKA RESORT-CLUB</div>
+            <div class="newsImageCat">Adventure</div>
+        </div>
+        <!-- One news text -->
+        <div class="newsText">
+            <div class="newsTextBlock">
+                <div class="newsTextName">REKA RESORT-CLUB</div>
+                <div class="Line"></div>
+                <div class="newsTextText">
+                    Устраивайтесь покомфортнее в резорт-зоне лучшего пляжного клуба Москвы. Яхтенный спорт, дефиле модельеров новой волны, эксклюзивные сеты от главных диджеев двух столиц — Reka принесёт вам всё, о чём можно только мечтать этим летом
+                </div>
+            </div>
+            <!-- One news button and fav -->
+            <div class="newsTextBut">ПОДРОБНОСТИ</div>
+            <div class="newsTextFav">В ИЗБРАННОЕ</div>
+        </div>
+    </div>
+    <!--End One news -->
+    <div id="more">
+        <div class="moreButton">ПОКАЗАТЬ ЕЩЕ</div>
+    </div>
+</div>
+<!-- END News -->
+<!-- Footer -->
+<div id="footer">
+    <!-- Nav -->
+    <div class="footerNav">
+        <ul>
+            <li><a href="#">О Le Cercle</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Agreement Licenses</a></li>
+        </ul>
+    </div>
+    <!-- Dotted line -->
+    <div class="Line"></div>
+    <!-- Copyright -->
+    <div class="footerCr">© PERNOD RICARD 2015. ALL RIGHTS RESRVED.</div>
+    <div class="footerLogo"></div>
+</div>
+<!-- END Footer -->
+
+</body>
+</html>

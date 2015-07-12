@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Untitled Document</title>
+    <link rel="stylesheet" type="text/css" href="css/cabinet.css">
+</head>
+
+<body>
+<script>
+    /*$.fn.wheel = function (callback) {
+     return this.each(function () {
+     $(this).on('mousewheel DOMMouseScroll', function (e) {
+     e.delta = null;
+     if (e.originalEvent) {
+     if (e.originalEvent.wheelDelta) e.delta = e.originalEvent.wheelDelta/-1;
+     if (e.originalEvent.deltaY) e.delta = e.originalEvent.deltaY;
+     if (e.originalEvent.detail) e.delta = e.originalEvent.detail;
+     }
+
+     if (typeof callback == 'function') {
+     callback.call(this, e);
+     }
+     });
+     });
+     };
+     $(document).wheel(function (e) {
+     e.preventDefault();
+     e.stopPropagation();
+     var top = $(window).scrollTop() + e.delta*3;
+     $('body,html').stop().animate({scrollTop: top}, 500);
+     });*/
+    $(window).bind('scroll',function(e){
+        parallaxScroll();
+    });
+    $(document).ready(function() {
+        parallaxScroll();
+        $('.menuIcon').click(function(){
+            var parent = $(this).parent()
+            if(parent.hasClass('Active')){
+                $('.menuNav').hide(200);
+                parent.removeClass('Active');
+            }else{
+                parent.addClass('Active');
+                $('.menuNav').show(200);
+            }
+        });
+        $('.arrow').click(function () {
+            var next,
+                    ind,
+                    parent,
+                    $this = $(this);
+
+            if($this.hasClass('left')){
+                ind = $this.parent().parent().index()-1;
+                var side1 = 'left',
+                        side2 = 'right';
+            }else{
+                ind = $this.parent().parent().index()+1;
+                var side1 = 'right',
+                        side2 = 'left';
+            }
+            parent = $this.parent().parent();
+            next = $($this.parent().parent().parent().find('.newsItem')[ind]);
+
+            if(next.hasClass('newsItem')){
+                parent.stop().fadeOut(600, function(){
+                    $(this).removeClass('newsActive');
+                    next.stop().fadeIn(600,function(){
+                        $(this).addClass('newsActive');
+                    });
+                    parallaxScroll();
+                });
+
+                /*parent.hide("slide", { direction: side1 }, 0,  function(){
+                 next.show("slide", { direction: side2 }, 0);
+                 parallaxScroll();
+                 });*/
+                next.find('.newsImageName').css('opacity',1);
+                next.find('.newsImageName').css('top',50+'%');
+                for (j = 0; j < 2; j++) {
+                    var arrow = $(next.find('.arrow')[j]);
+                    arrow.css('opacity',1);
+                    arrow.css('top',50+'%');
+                }
+            }
+        });
+    });
+</script>
+<!-- Header -->
+<div id="header">
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#">ADVENTURE</a></li>
+            <li><a href="#">APPRECIATION</a></li>
+            <li><a href="#">CELEBRATION</a></li>
+        </ul>
+    </nav>
+    <!-- Logo -->
+    <a href="#" id="logo"></a>
+    <!-- Menu -->
+    <div id="menu" >
+        <div class="name">
+            Добрый день, <a href="#">lya Sergeevich</a>
+        </div>
+        <div class="menuIcon"></div>
+        <div class="cl"></div>
+        <div class="menuNav">
+            <ul>
+                <li><a href="#">КАБИНЕТ</a></li>
+                <li><a href="#">ГДЕ КУПИТЬ</a></li>
+                <li><a href="#">O LE CERCLE</a></li>
+                <li><a href="#">ИЗБРАННОЕ</a></li>
+                <li><a href="#">ПРИВИЛЕГИИ</a></li>
+            </ul>
+            <!-- Nav for mob -->
+            <ul id="navmob">
+                <li><a href="#">ADVENTURE</a></li>
+                <li><a href="#">APPRECIATION</a></li>
+                <li><a href="#">CELEBRATION</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Logout -->
+    <div id="logout"></div>
+</div>
+<!-- END Header -->
+<div class="header-image">
+    <p class="header-name">Личный кабинет</p>
+</div>
+<div class="wrapper">
+    <table class="information">
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    ИМЯ
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    отчество
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    Илья
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Бенедиктович
+                </p>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Фамилия
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    ПОЛ
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    Ганапольский-Таврический
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Мужской
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    дата рождения
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    E-maiL
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    Январь, <span class="birthday-date">14, 1982</span>
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Илья
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    дополнительный e-mail
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    городской телефон
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    ilya_3@sdsdds.ru
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    <span class="mobile-number">+7 495 238 23 23</span>
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    мобильный телефон
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    ГОРОД
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    <span class="mobile-number">+7 495 238 23 23</span>
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Москва
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    адрес
+                </p>
+            </td>
+            <td class="column" rowspan="2">
+                <div class="agree"><span class="gal"></span><span class="gal-text">СОгласие на коммуникацию</span></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    Дербеневская набережная дом 7 строение 8
+                </p>
+            </td>
+        </tr>
+    </table>
+    <div class="line-all"></div>
+
+
+    <table class="information">
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    любимый вид алкоголя
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    любимый алкогольный бренд
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    Ром
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Bacardi
+                </p>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Где вы обычно приобретаете алкоголь
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Заинтересованы ли вы получать<br />
+                    новости брендов, входящих в Le Cercle?
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                    Duty Free
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Да
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+                    Комментарии
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Заинтересованы ли вы получать приглашения<br/>
+                    на мероприятия брендов, входящих в Le Cercle?
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Да
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-name">
+
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-name">
+                    Заинтересованы ли вы<br />
+                    в приобретении алкоголя?
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="column">
+                <p class="item-value">
+                </p>
+            </td>
+            <td class="column">
+                <p class="item-value">
+                    Да
+                </p>
+            </td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <div class="redact-button">редактировать</div>
+    </div>
+
+
+</div>
+<!-- Footer -->
+<div id="footer">
+    <!-- Nav -->
+    <div class="footerNav">
+        <ul>
+            <li><a href="#">О Le Cercle</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Agreement Licenses</a></li>
+        </ul>
+    </div>
+    <!-- Dotted line -->
+    <div class="Line"></div>
+    <!-- Copyright -->
+    <div class="footerCr">© PERNOD RICARD 2015. ALL RIGHTS RESRVED.</div>
+    <div class="footerLogo"></div>
+</div>
+<!-- END Footer -->
+
+</body>
+</html>
